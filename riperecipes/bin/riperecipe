@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require './lib/riperecipes'
+Riperecipes::CLI.new.call
