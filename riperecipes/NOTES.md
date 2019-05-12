@@ -22,3 +22,4 @@ A cuisine has a name, list of recipes, url
 What is a recipe?
 
 A recipe has a name, list of ingredients, url, and a submission description
+

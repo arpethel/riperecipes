@@ -3,8 +3,6 @@ source "https://rubygems.org"
 # Specify your gem's dependencies in riperecipes.gemspec
 gemspec
 gem 'pry'
-gem 'nokogiri', '1.6'
+gem 'nokogiri'
 gem 'rspec'
 
-# pry
-# Nokogiri

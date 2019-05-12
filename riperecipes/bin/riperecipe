@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
 
-require './lib/riperecipes'
+require "bundler/setup"
+require "riperecipes"
+
 Riperecipes::CLI.new.call
