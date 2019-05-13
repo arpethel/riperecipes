@@ -13,7 +13,7 @@ class Riperecipes::CLI
 
         @recipe = Riperecipes::Recipe.today
         @recipe.each.with_index(1) do |cuisines, i|
-            puts "#{i}. #{cuisines.cuisine} - #{cuisines.name} - Ready In: #{cuisines.ready_time}"
+            puts "#{i}. #{cuisines.cuisine} - #{cuisines.name}"
         end
 
     end
@@ -24,14 +24,20 @@ class Riperecipes::CLI
             puts "Please enter a selection:"
             puts "For a particular cuisine, enter 'Asian', 'Indian', 'Italian', 'Mexican', or 'Southern'."
             puts "To quit, type 'quit'."
-            puts "What would you like to do?"
+            puts "Which cuisine would you like to explore today?"
 
             input = gets.strip
 
             case input
             when 'Asian'
                 asian = @recipe[0]
-                puts "#{asian.cuisine} - #{asian.name} - Ready In: #{asian.ready_time}"
+                puts " "
+                puts "-------------------------------------------"
+                puts "#{asian.cuisine} - #{asian.name} - Ready In: #{asian.ready_time} #{asian.list_of_ingredients}"
+                puts " "
+                puts asian.directions
+                puts "-------------------------------------------"
+                puts " "
             when 'Indian'
                 indian = @recipe[1]
                 puts "#{indian.cuisine} - #{indian.name} - Ready In: #{indian.ready_time}"
