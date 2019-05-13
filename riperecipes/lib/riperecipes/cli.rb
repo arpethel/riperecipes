@@ -2,29 +2,28 @@
 class Riperecipes::CLI
 
     def call
-        list_recipes
         menu
         goodbye
     end
 
-    def list_recipes
+    def menu
+        puts " "
         puts "Welcome to Ripe Recipes!"
         puts "This tool provides you with cuisine suggestions for today!"
-
+        puts " "
+        puts "For a particular cuisine, enter 'Asian', 'Indian', 'Italian', 'Mexican', or 'Southern'."
+        puts "You can also type 'quit', to quit."
+        puts "Which cuisine would you like to explore today?"
         @recipe = Riperecipes::Recipe.today
-        @recipe.each.with_index(1) do |cuisines, i|
-            puts "#{i}. #{cuisines.cuisine} - #{cuisines.name}"
-        end
-
-    end
-
-    def menu
         input = nil
         while input != 'quit'
-            puts "Please enter a selection:"
-            puts "For a particular cuisine, enter 'Asian', 'Indian', 'Italian', 'Mexican', or 'Southern'."
-            puts "To quit, type 'quit'."
-            puts "Which cuisine would you like to explore today?"
+            # puts " "
+            # puts "Welcome to Ripe Recipes!"
+            # puts "This tool provides you with cuisine suggestions for today!"
+            # puts " "
+            puts "For another cuisine, enter 'Asian', 'Indian', 'Italian', 'Mexican', or 'Southern'."
+            puts "Or, type 'quit', to quit."
+            # puts "Which cuisine would you like to explore today?"
 
             input = gets.strip
 
@@ -40,27 +39,47 @@ class Riperecipes::CLI
                 puts " "
             when 'Indian'
                 indian = @recipe[1]
-                puts "#{indian.cuisine} - #{indian.name} - Ready In: #{indian.ready_time}"
+                puts " "
+                puts "-------------------------------------------"
+                puts "#{indian.cuisine} - #{indian.name} - Ready In: #{indian.ready_time} #{indian.list_of_ingredients}"
+                puts " "
+                puts indian.directions
+                puts "-------------------------------------------"
+                puts " "
             when 'Italian'
                 italian = @recipe[2]
-                puts "#{italian.cuisine} - #{italian.name} - Ready In: #{italian.ready_time}"
+                puts " "
+                puts "-------------------------------------------"
+                puts "#{italian.cuisine} - #{italian.name} - Ready In: #{italian.ready_time} #{italian.list_of_ingredients}"
+                puts " "
+                puts italian.directions
+                puts "-------------------------------------------"
+                puts " "
             when 'Mexican'
                 mexican = @recipe[3]
-                puts "#{mexican.cuisine} - #{mexican.name} - Ready In: #{mexican.ready_time}"
+                puts " "
+                puts "-------------------------------------------"
+                puts "#{mexican.cuisine} - #{mexican.name} - Ready In: #{mexican.ready_time} #{mexican.list_of_ingredients}"
+                puts " "
+                puts mexican.directions
+                puts "-------------------------------------------"
+                puts " "
             when 'Southern'
                 southern = @recipe[4]
-                puts "#{southern.cuisine} - #{southern.name} - Ready In: #{southern.ready_time}"
+                puts " "
+                puts "-------------------------------------------"
+                puts "#{southern.cuisine} - #{southern.name} - Ready In: #{southern.ready_time} #{southern.list_of_ingredients}"
+                puts " "
+                puts southern.directions
+                puts "-------------------------------------------"
+                puts " "
             else
                 puts "Please enter a known selection. Otherwise type 'quit' to quit."
             end
         end
-
     end
 
     def goodbye
         puts "Thanks for stopping by! Goodbye!"
     end
-
-
-
 end

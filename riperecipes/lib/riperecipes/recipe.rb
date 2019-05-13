@@ -9,54 +9,11 @@ class Riperecipes::Recipe
         all_recipes = []
 
         all_recipes << self.scrape_asian
+        all_recipes << self.scrape_indian
+        all_recipes << self.scrape_italian
+        all_recipes << self.scrape_mexican
+        all_recipes << self.scrape_southern
 
-        # TODAY'S SUGGESTED RECIPES
-        # Asian
-        # recipe_1 = self.new
-        # recipe_1.cuisine = "Asian"
-        # recipe_1.name = "Kima"
-        # recipe_1.ready_time = "1 min"
-        # recipe_1.list_of_ingredients = "A)... B)... C)..."
-        # recipe_1.url = "https://www.allrecipes.com/recipe/246250/kima/?internalSource=staff%20pick&referringId=227&referringContentType=Recipe%20Hub"
-        # recipe_1.description = "This was a family favorite...."
-
-        # # Indian
-        # recipe_2 = self.new
-        # recipe_2.cuisine = "Indian"
-        # recipe_2.name = "Punjabi Chicken in Thick Gravy"
-        # recipe_2.ready_time = "2 min"
-        # recipe_2.list_of_ingredients = "A)... B)... C)..."
-        # recipe_2.url = "https://www.allrecipes.com/recipe/150340/punjabi-chicken-in-thick-gravy/?internalSource=streams&referringId=17136&referringContentType=Recipe%20Hub&clickId=st_trending_b"
-        # recipe_2.description = "This is a type of chicken curry...."
-
-        # # Italian
-        # recipe_3 = self.new
-        # recipe_3.cuisine = "Italian"
-        # recipe_3.name = "World's Best Lasagna"
-        # recipe_3.ready_time = "3 min"
-        # recipe_3.list_of_ingredients = "A)... B)... C)..."
-        # recipe_3.url = "https://www.allrecipes.com/recipe/23600/worlds-best-lasagna/?internalSource=streams&referringId=723&referringContentType=Recipe%20Hub&clickId=st_recipes_mades"
-        # recipe_3.description = "This is a type of chicken curry...."
-
-        # # Mexican
-        # recipe_4 = self.new
-        # recipe_4.cuisine = "Mexican"
-        # recipe_4.name = "Slow Cooker Chicken Taco Soup"
-        # recipe_4.ready_time = "4 min"
-        # recipe_4.list_of_ingredients = "A)... B)... C)..."
-        # recipe_4.url = "https://www.allrecipes.com/recipe/70343/slow-cooker-chicken-taco-soup/?internalSource=streams&referringId=728&referringContentType=Recipe%20Hub&clickId=st_recipes_mades"
-        # recipe_4.description = "This is a type of chicken curry...."
-
-        # # Southern
-        # recipe_5 = self.new
-        # recipe_5.cuisine = "Southern"
-        # recipe_5.name = "Colleen's Slow Cooker Jambalaya"
-        # recipe_5.ready_time = "5 min"
-        # recipe_5.list_of_ingredients = "A)... B)... C)..."
-        # recipe_5.url = "https://www.allrecipes.com/recipe/73634/colleens-slow-cooker-jambalaya/?internalSource=streams&referringId=15876&referringContentType=Recipe%20Hub&clickId=st_recipes_mades"
-        # recipe_5.description = "This is a type of chicken curry...."
-
-        # [recipe_1, recipe_2, recipe_3, recipe_4, recipe_5]
         all_recipes
     end
 
@@ -94,18 +51,160 @@ class Riperecipes::Recipe
         end
         
         asian_recipe.list_of_ingredients = "\n***Ingredients***\n* #{ingredient_items[0...-1].join(" \n* ")}\n"
-        
-
-        # binding.pry
 
         asian_recipe
+    end
 
+    def self.scrape_indian  
+        doc_indian_name = Nokogiri::HTML(open("https://www.allrecipes.com/recipes/233/world-cuisine/asian/indian/"))
         
-        # binding.pry
-        # doc_indian = Nokogiri::HTML(open("https://www.allrecipes.com/recipes/233/world-cuisine/asian/indian/"))
-        # doc_italian = Nokogiri::HTML(open("https://www.allrecipes.com/recipes/723/world-cuisine/european/italian/"))
-        # doc_mexican = Nokogiri::HTML(open("https://www.allrecipes.com/recipes/728/world-cuisine/latin-american/mexican/"))
-        # doc_southern = Nokogiri::HTML(open("https://www.allrecipes.com/recipes/15876/us-recipes/southern/"))
+        indian_recipe = self.new
+        indian_recipe.cuisine = "Indian"
+        indian_recipe.name = doc_indian_name.search("h3")[12].text
+
+        doc_indian_ingredients = Nokogiri::HTML(open("https://www.allrecipes.com/recipe/228293/curry-stand-chicken-tikka-masala-sauce/?internalSource=streams&referringId=233&referringContentType=Recipe%20Hub&clickId=st_recipes_mades"))
+
+        indian_recipe.ready_time = doc_indian_ingredients.search("span.ready-in-time").text
+        indian_directions = doc_indian_ingredients.search("span.recipe-directions__list--item").text.split
+        indian_recipe.directions = indian_directions.join(" ")
+
+        ingredient_items = []
+
+        # First Colomn of Ingredients
+        indian_ingredients_1 = []
+        indian_ingredients_1 << doc_indian_ingredients.search("#lst_ingredients_1 span.recipe-ingred_txt")
+        indian_ingredients_1.each do |item|
+            item.each do |each_item|
+                ingredient_items << each_item.text
+            end
+        end
+
+        # Second Colomn of Ingredients
+        indian_ingredients_2 = []
+        indian_ingredients_2 << doc_indian_ingredients.search("#lst_ingredients_2 span.recipe-ingred_txt")
+        indian_ingredients_2.each do |item|
+            item.each do |each_item|
+                ingredient_items << each_item.text
+            end
+        end
+        
+        indian_recipe.list_of_ingredients = "\n***Ingredients***\n* #{ingredient_items[0...-1].join(" \n* ")}\n"
+
+        indian_recipe
+    end
+
+    def self.scrape_italian  
+        doc_italian_name = Nokogiri::HTML(open("https://www.allrecipes.com/recipes/723/world-cuisine/european/italian/"))
+        
+        italian_recipe = self.new
+        italian_recipe.cuisine = "Italian"
+        italian_recipe.name = doc_italian_name.search("h3")[12].text
+
+        doc_italian_ingredients = Nokogiri::HTML(open("https://www.allrecipes.com/recipe/23600/worlds-best-lasagna/?internalSource=streams&referringId=723&referringContentType=Recipe%20Hub&clickId=st_recipes_mades"))
+
+        italian_recipe.ready_time = doc_italian_ingredients.search("span.ready-in-time").text
+        italian_directions = doc_italian_ingredients.search("span.recipe-directions__list--item").text.split
+        italian_recipe.directions = italian_directions.join(" ")
+
+        ingredient_items = []
+
+        # First Colomn of Ingredients
+        italian_ingredients_1 = []
+        italian_ingredients_1 << doc_italian_ingredients.search("#lst_ingredients_1 span.recipe-ingred_txt")
+        italian_ingredients_1.each do |item|
+            item.each do |each_item|
+                ingredient_items << each_item.text
+            end
+        end
+
+        # Second Colomn of Ingredients
+        italian_ingredients_2 = []
+        italian_ingredients_2 << doc_italian_ingredients.search("#lst_ingredients_2 span.recipe-ingred_txt")
+        italian_ingredients_2.each do |item|
+            item.each do |each_item|
+                ingredient_items << each_item.text
+            end
+        end
+        
+        italian_recipe.list_of_ingredients = "\n***Ingredients***\n* #{ingredient_items[0...-1].join(" \n* ")}\n"
+
+        italian_recipe
+    end
+
+    def self.scrape_mexican  
+        doc_mexican_name = Nokogiri::HTML(open("https://www.allrecipes.com/recipes/728/world-cuisine/latin-american/mexican/"))
+        
+        mexican_recipe = self.new
+        mexican_recipe.cuisine = "Mexican"
+        mexican_recipe.name = doc_mexican_name.search("h3")[12].text
+
+        doc_mexican_ingredients = Nokogiri::HTML(open("https://www.allrecipes.com/recipe/217911/salsa-chicken-meatloaf/?internalSource=streams&referringId=728&referringContentType=Recipe%20Hub&clickId=st_recipes_mades"))
+
+        mexican_recipe.ready_time = doc_mexican_ingredients.search("span.ready-in-time").text
+        mexican_directions = doc_mexican_ingredients.search("span.recipe-directions__list--item").text.split
+        mexican_recipe.directions = mexican_directions.join(" ")
+
+        ingredient_items = []
+
+        # First Colomn of Ingredients
+        mexican_ingredients_1 = []
+        mexican_ingredients_1 << doc_mexican_ingredients.search("#lst_ingredients_1 span.recipe-ingred_txt")
+        mexican_ingredients_1.each do |item|
+            item.each do |each_item|
+                ingredient_items << each_item.text
+            end
+        end
+
+        # Second Colomn of Ingredients
+        mexican_ingredients_2 = []
+        mexican_ingredients_2 << doc_mexican_ingredients.search("#lst_ingredients_2 span.recipe-ingred_txt")
+        mexican_ingredients_2.each do |item|
+            item.each do |each_item|
+                ingredient_items << each_item.text
+            end
+        end
+        
+        mexican_recipe.list_of_ingredients = "\n***Ingredients***\n* #{ingredient_items[0...-1].join(" \n* ")}\n"
+
+        mexican_recipe
+    end
+
+    def self.scrape_southern  
+        doc_southern_name = Nokogiri::HTML(open("https://www.allrecipes.com/recipes/15876/us-recipes/southern/"))
+        
+        southern_recipe = self.new
+        southern_recipe.cuisine = "Southern"
+        southern_recipe.name = doc_southern_name.search("h3")[12].text
+
+        doc_southern_ingredients = Nokogiri::HTML(open("https://www.allrecipes.com/recipe/73634/colleens-slow-cooker-jambalaya/?internalSource=streams&referringId=15876&referringContentType=Recipe%20Hub&clickId=st_recipes_mades"))
+
+        southern_recipe.ready_time = doc_southern_ingredients.search("span.ready-in-time").text
+        southern_directions = doc_southern_ingredients.search("span.recipe-directions__list--item").text.split
+        southern_recipe.directions = southern_directions.join(" ")
+
+        ingredient_items = []
+
+        # First Colomn of Ingredients
+        southern_ingredients_1 = []
+        southern_ingredients_1 << doc_southern_ingredients.search("#lst_ingredients_1 span.recipe-ingred_txt")
+        southern_ingredients_1.each do |item|
+            item.each do |each_item|
+                ingredient_items << each_item.text
+            end
+        end
+
+        # Second Colomn of Ingredients
+        southern_ingredients_2 = []
+        southern_ingredients_2 << doc_southern_ingredients.search("#lst_ingredients_2 span.recipe-ingred_txt")
+        southern_ingredients_2.each do |item|
+            item.each do |each_item|
+                ingredient_items << each_item.text
+            end
+        end
+        
+        southern_recipe.list_of_ingredients = "\n***Ingredients***\n* #{ingredient_items[0...-1].join(" \n* ")}\n"
+
+        southern_recipe
     end
 
 
