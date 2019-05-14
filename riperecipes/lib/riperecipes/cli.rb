@@ -20,20 +20,14 @@ class Riperecipes::CLI
     end
 
     def menu
-        
         puts "For a particular cuisine, enter 'Asian', 'Indian', 'Italian', 'Mexican', or 'Southern'."
         puts "You can also type 'quit', to quit."
         puts "Which cuisine would you like to explore today?"
-        # @recipe = Riperecipes::Recipe.today
+
         input = nil
         while input != 'quit'
-            # puts " "
-            # puts "Welcome to Ripe Recipes!"
-            # puts "This tool provides you with cuisine suggestions for today!"
-            # puts " "
             puts "For another cuisine, enter 'Asian', 'Indian', 'Italian', 'Mexican', or 'Southern'."
             puts "Or, type 'quit', to quit."
-            # puts "Which cuisine would you like to explore today?"
 
             input = gets.strip
 
