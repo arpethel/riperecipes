@@ -40,6 +40,7 @@ class Riperecipes::CLI
                 puts " "
                 puts asian.directions
                 puts "-------------------------------------------"
+                puts "#{asian.url}"
                 puts " "
             when 'Indian'
                 indian = @recipe[1]
@@ -49,6 +50,7 @@ class Riperecipes::CLI
                 puts " "
                 puts indian.directions
                 puts "-------------------------------------------"
+                puts "#{indian.url}"
                 puts " "
             when 'Italian'
                 italian = @recipe[2]
@@ -58,6 +60,7 @@ class Riperecipes::CLI
                 puts " "
                 puts italian.directions
                 puts "-------------------------------------------"
+                puts "#{italian.url}"
                 puts " "
             when 'Mexican'
                 mexican = @recipe[3]
@@ -67,6 +70,7 @@ class Riperecipes::CLI
                 puts " "
                 puts mexican.directions
                 puts "-------------------------------------------"
+                puts "#{mexican.url}"
                 puts " "
             when 'Southern'
                 southern = @recipe[4]
@@ -76,6 +80,7 @@ class Riperecipes::CLI
                 puts " "
                 puts southern.directions
                 puts "-------------------------------------------"
+                puts "#{southern.url}"
                 puts " "
             else
                 puts "Please enter a known selection. Otherwise type 'quit' to quit."

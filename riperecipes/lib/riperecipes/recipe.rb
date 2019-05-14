@@ -23,7 +23,8 @@ class Riperecipes::Recipe
         asian_recipe = self.new
         asian_recipe.cuisine = "Asian"
         asian_recipe.name = doc_asian_name.search("h3")[12].text
-
+        asian_recipe.url = "https://armagazine.com/2LKNSnI"
+        
         doc_asian_ingredients = Nokogiri::HTML(open("https://www.allrecipes.com/recipe/128601/my-favorite-sesame-noodles/?internalSource=streams&referringId=227&referringContentType=Recipe%20Hub&clickId=st_recipes_mades"))
 
         asian_recipe.ready_time = doc_asian_ingredients.search("span.ready-in-time").text
@@ -61,6 +62,7 @@ class Riperecipes::Recipe
         indian_recipe = self.new
         indian_recipe.cuisine = "Indian"
         indian_recipe.name = doc_indian_name.search("h3")[12].text
+        indian_recipe.url = "https://armagazine.com/30isMAj"
 
         doc_indian_ingredients = Nokogiri::HTML(open("https://www.allrecipes.com/recipe/228293/curry-stand-chicken-tikka-masala-sauce/?internalSource=streams&referringId=233&referringContentType=Recipe%20Hub&clickId=st_recipes_mades"))
 
@@ -99,6 +101,7 @@ class Riperecipes::Recipe
         italian_recipe = self.new
         italian_recipe.cuisine = "Italian"
         italian_recipe.name = doc_italian_name.search("h3")[12].text
+        italian_recipe.url = "https://armagazine.com/2HhSbm4"
 
         doc_italian_ingredients = Nokogiri::HTML(open("https://www.allrecipes.com/recipe/23600/worlds-best-lasagna/?internalSource=streams&referringId=723&referringContentType=Recipe%20Hub&clickId=st_recipes_mades"))
 
@@ -137,6 +140,7 @@ class Riperecipes::Recipe
         mexican_recipe = self.new
         mexican_recipe.cuisine = "Mexican"
         mexican_recipe.name = doc_mexican_name.search("h3")[12].text
+        mexican_recipe.url = "https://armagazine.com/2HjE3bZ"
 
         doc_mexican_ingredients = Nokogiri::HTML(open("https://www.allrecipes.com/recipe/217911/salsa-chicken-meatloaf/?internalSource=streams&referringId=728&referringContentType=Recipe%20Hub&clickId=st_recipes_mades"))
 
@@ -175,6 +179,7 @@ class Riperecipes::Recipe
         southern_recipe = self.new
         southern_recipe.cuisine = "Southern"
         southern_recipe.name = doc_southern_name.search("h3")[12].text
+        southern_recipe.url = "https://armagazine.com/2w0G46o"
 
         doc_southern_ingredients = Nokogiri::HTML(open("https://www.allrecipes.com/recipe/73634/colleens-slow-cooker-jambalaya/?internalSource=streams&referringId=15876&referringContentType=Recipe%20Hub&clickId=st_recipes_mades"))
 
