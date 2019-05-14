@@ -206,7 +206,4 @@ class Riperecipes::Recipe
 
         southern_recipe
     end
-
-
-
 end

@@ -1,6 +1,7 @@
 # Riperecipes
 
-RipeRecipes is a simple CLI gem to get recipe ingredients from AllRecipes.com for select meals.
+riperecipes is a simple CLI gem to get recipe ingredients from AllRecipes.com for select meals. This gem pulls
+data from the "Most Made Today" section of five different cuisines: Asian, Indian, Italian, Mexican and Southern.
 
 ## Installation
 
@@ -12,11 +13,11 @@ gem 'riperecipes'
 
 And then execute:
 
-    $ bundle
+    ```$ bundle```
 
 Or install it yourself as:
 
-    $ gem install riperecipes
+    ```$ gem install riperecipes```
 
 ## Usage
 
