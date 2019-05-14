@@ -1,3 +1,4 @@
+
 class Riperecipes::Recipe
     attr_accessor :name, :list_of_ingredients, :url, :directions, :cuisine, :ready_time   
 
@@ -73,22 +74,10 @@ class Riperecipes::Recipe
         ingredient_items = []
 
         # First Colomn of Ingredients
-        indian_ingredients_1 = []
-        indian_ingredients_1 << doc_indian_ingredients.search("#lst_ingredients_1 span.recipe-ingred_txt")
-        indian_ingredients_1.each do |item|
-            item.each do |each_item|
-                ingredient_items << each_item.text
-            end
-        end
+        doc_indian_ingredients.search("#lst_ingredients_1 span.recipe-ingred_txt").each {|item| ingredient_items << item.text}
 
         # Second Colomn of Ingredients
-        indian_ingredients_2 = []
-        indian_ingredients_2 << doc_indian_ingredients.search("#lst_ingredients_2 span.recipe-ingred_txt")
-        indian_ingredients_2.each do |item|
-            item.each do |each_item|
-                ingredient_items << each_item.text
-            end
-        end
+        doc_indian_ingredients.search("#lst_ingredients_2 span.recipe-ingred_txt").each {|item| ingredient_items << item.text}
         
         indian_recipe.list_of_ingredients = "\n***Ingredients***\n* #{ingredient_items[0...-1].join(" \n* ")}\n"
 
@@ -112,22 +101,10 @@ class Riperecipes::Recipe
         ingredient_items = []
 
         # First Colomn of Ingredients
-        italian_ingredients_1 = []
-        italian_ingredients_1 << doc_italian_ingredients.search("#lst_ingredients_1 span.recipe-ingred_txt")
-        italian_ingredients_1.each do |item|
-            item.each do |each_item|
-                ingredient_items << each_item.text
-            end
-        end
+        doc_italian_ingredients.search("#lst_ingredients_1 span.recipe-ingred_txt").each {|item| ingredient_items << item.text}
 
         # Second Colomn of Ingredients
-        italian_ingredients_2 = []
-        italian_ingredients_2 << doc_italian_ingredients.search("#lst_ingredients_2 span.recipe-ingred_txt")
-        italian_ingredients_2.each do |item|
-            item.each do |each_item|
-                ingredient_items << each_item.text
-            end
-        end
+        doc_italian_ingredients.search("#lst_ingredients_2 span.recipe-ingred_txt").each {|item| ingredient_items << item.text}
         
         italian_recipe.list_of_ingredients = "\n***Ingredients***\n* #{ingredient_items[0...-1].join(" \n* ")}\n"
 
@@ -151,22 +128,10 @@ class Riperecipes::Recipe
         ingredient_items = []
 
         # First Colomn of Ingredients
-        mexican_ingredients_1 = []
-        mexican_ingredients_1 << doc_mexican_ingredients.search("#lst_ingredients_1 span.recipe-ingred_txt")
-        mexican_ingredients_1.each do |item|
-            item.each do |each_item|
-                ingredient_items << each_item.text
-            end
-        end
+        doc_mexican_ingredients.search("#lst_ingredients_1 span.recipe-ingred_txt").each {|item| ingredient_items << item.text}
 
         # Second Colomn of Ingredients
-        mexican_ingredients_2 = []
-        mexican_ingredients_2 << doc_mexican_ingredients.search("#lst_ingredients_2 span.recipe-ingred_txt")
-        mexican_ingredients_2.each do |item|
-            item.each do |each_item|
-                ingredient_items << each_item.text
-            end
-        end
+        doc_mexican_ingredients.search("#lst_ingredients_2 span.recipe-ingred_txt").each {|item| ingredient_items << item.text}
         
         mexican_recipe.list_of_ingredients = "\n***Ingredients***\n* #{ingredient_items[0...-1].join(" \n* ")}\n"
 
@@ -190,22 +155,10 @@ class Riperecipes::Recipe
         ingredient_items = []
 
         # First Colomn of Ingredients
-        southern_ingredients_1 = []
-        southern_ingredients_1 << doc_southern_ingredients.search("#lst_ingredients_1 span.recipe-ingred_txt")
-        southern_ingredients_1.each do |item|
-            item.each do |each_item|
-                ingredient_items << each_item.text
-            end
-        end
+        doc_southern_ingredients.search("#lst_ingredients_1 span.recipe-ingred_txt").each {|item| ingredient_items << item.text}
 
         # Second Colomn of Ingredients
-        southern_ingredients_2 = []
-        southern_ingredients_2 << doc_southern_ingredients.search("#lst_ingredients_2 span.recipe-ingred_txt")
-        southern_ingredients_2.each do |item|
-            item.each do |each_item|
-                ingredient_items << each_item.text
-            end
-        end
+        doc_southern_ingredients.search("#lst_ingredients_2 span.recipe-ingred_txt").each {|item| ingredient_items << item.text}
         
         southern_recipe.list_of_ingredients = "\n***Ingredients***\n* #{ingredient_items[0...-1].join(" \n* ")}\n"
 
