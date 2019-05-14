@@ -80,6 +80,8 @@ class Riperecipes::CLI
                 puts "-------------------------------------------"
                 puts "#{southern.url}"
                 puts " "
+            when 'quit'
+                break
             else
                 puts "Please enter a known selection. Otherwise type 'quit' to quit."
             end
@@ -87,6 +89,7 @@ class Riperecipes::CLI
     end
 
     def goodbye
+        puts " "
         puts "Thanks for stopping by! Goodbye!"
     end
 end
