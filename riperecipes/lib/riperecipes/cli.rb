@@ -2,19 +2,29 @@
 class Riperecipes::CLI
 
     def call
+        list
         menu
         goodbye
     end
 
-    def menu
+    def list
         puts " "
         puts "Welcome to Ripe Recipes!"
         puts "This tool provides you with cuisine suggestions for today!"
         puts " "
+        @recipe = Riperecipes::Recipe.today
+        @recipe.each.with_index(1) do |cuisines, i|
+            puts "#{i}. #{cuisines.cuisine} - #{cuisines.name} - Ready In: #{cuisines.ready_time}"
+        end
+        puts " "
+    end
+
+    def menu
+        
         puts "For a particular cuisine, enter 'Asian', 'Indian', 'Italian', 'Mexican', or 'Southern'."
         puts "You can also type 'quit', to quit."
         puts "Which cuisine would you like to explore today?"
-        @recipe = Riperecipes::Recipe.today
+        # @recipe = Riperecipes::Recipe.today
         input = nil
         while input != 'quit'
             # puts " "
