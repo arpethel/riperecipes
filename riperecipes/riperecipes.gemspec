@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "riperecipes"
   spec.version       = Riperecipes::VERSION
   spec.authors       = ["arpethel"]
-  spec.email         = ["hello@arpethel.dev"]
+  spec.email         = ["arpethel@gmail.com"]
 
   spec.summary       = %q{Collects recipes for certain cuisines.}
   spec.description   = "RipeRecipes is a simple CLI gem to get recipe ingredients from AllRecipes.com for your favorite meals."
