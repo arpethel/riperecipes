@@ -13,11 +13,11 @@ gem 'riperecipes'
 
 And then execute:
 
-    ```$ bundle```
+    $ bundle
 
 Or install it yourself as:
 
-    ```$ gem install riperecipes```
+    $ gem install riperecipes
 
 ## Usage
 
