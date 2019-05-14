@@ -17,22 +17,20 @@ class Riperecipes::CLI
             puts "#{i}. #{cuisines.cuisine} - #{cuisines.name} - Ready In: #{cuisines.ready_time}"
         end
         puts " "
+        puts "Which cuisine would you like to explore today?"
     end
 
     def menu
-        puts "For a particular cuisine, enter 'Asian', 'Indian', 'Italian', 'Mexican', or 'Southern'."
-        puts "You can also type 'quit', to quit."
-        puts "Which cuisine would you like to explore today?"
-
         input = nil
         while input != 'quit'
-            puts "For another cuisine, enter 'Asian', 'Indian', 'Italian', 'Mexican', or 'Southern'."
+            puts " "
+            puts "Enter 'Asian', 'Indian', 'Italian', 'Mexican', or 'Southern' for a particular cuisine."
             puts "Or, type 'quit', to quit."
 
-            input = gets.strip
+            input = gets.strip.downcase
 
             case input
-            when 'Asian'
+            when 'asian'
                 asian = @recipe[0]
                 puts " "
                 puts "-------------------------------------------"
@@ -42,7 +40,7 @@ class Riperecipes::CLI
                 puts "-------------------------------------------"
                 puts "#{asian.url}"
                 puts " "
-            when 'Indian'
+            when 'indian'
                 indian = @recipe[1]
                 puts " "
                 puts "-------------------------------------------"
@@ -52,7 +50,7 @@ class Riperecipes::CLI
                 puts "-------------------------------------------"
                 puts "#{indian.url}"
                 puts " "
-            when 'Italian'
+            when 'italian'
                 italian = @recipe[2]
                 puts " "
                 puts "-------------------------------------------"
@@ -62,7 +60,7 @@ class Riperecipes::CLI
                 puts "-------------------------------------------"
                 puts "#{italian.url}"
                 puts " "
-            when 'Mexican'
+            when 'mexican'
                 mexican = @recipe[3]
                 puts " "
                 puts "-------------------------------------------"
@@ -72,7 +70,7 @@ class Riperecipes::CLI
                 puts "-------------------------------------------"
                 puts "#{mexican.url}"
                 puts " "
-            when 'Southern'
+            when 'southern'
                 southern = @recipe[4]
                 puts " "
                 puts "-------------------------------------------"
